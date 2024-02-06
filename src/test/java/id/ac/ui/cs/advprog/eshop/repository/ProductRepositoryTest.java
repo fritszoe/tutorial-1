@@ -118,5 +118,7 @@ public class ProductRepositoryTest {
         productRepository.delete(product2);
         Iterator<Product> productIterator = productRepository.findAll();
         assertTrue(productIterator.hasNext());
+        assertNull(productRepository.findById("b652670f-2b39-46f3-a232-dd8fff1f60f6"));
+        assertNotNull(productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6"));
     }
 }
