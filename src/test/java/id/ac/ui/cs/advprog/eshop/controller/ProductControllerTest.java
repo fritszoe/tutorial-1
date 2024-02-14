@@ -10,7 +10,7 @@ import org.springframework.validation.support.BindingAwareModelMap;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class ProductControllerTest {
+class ProductControllerTest {
 
     private ProductController productController;
     private ProductService productService;
