@@ -8,8 +8,8 @@ plugins {
 
 sonar {
     properties {
-        property("sonar.projectKey", "nabielsubhan_eshop")
-        property("sonar.organization", "nabielsubhan")
+        property("sonar.projectKey", "fritszoe_tutorial-1")
+        property("sonar.organization", "fritszoe")
         property("sonar.host.url", "https://sonarcloud.io")
     }
 }
