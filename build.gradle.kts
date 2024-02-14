@@ -13,17 +13,16 @@ sonar {
         property("sonar.host.url", "https://sonarcloud.io")
     }
 }
+
 group = "id.ac.ui.cs.advprog"
 version = "0.0.1-SNAPSHOT"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
 }
-
-val seleniumJavaVersion = "4.14.1"
-val seleniumJupiterVersion = "5.0.1"
-val webdrivermanagerVersion = "5.6.3"
-val junitJupiterVersion = "5.9.1"
 
 configurations {
     compileOnly {
@@ -34,6 +33,11 @@ configurations {
 repositories {
     mavenCentral()
 }
+
+val seleniumJavaVersion = "4.14.1"
+val seleniumJupiterVersion = "5.0.1"
+val webdrivermanagerVersion = "5.6.3"
+val junitJupiterVersion = "5.9.1"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
@@ -50,25 +54,25 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
 }
 
-tasks.register<Test>("unitTest"){
-    description = "Runs unit tests"
+tasks.register<Test>("unitTest") {
+    description = "Runs unit tests."
     group = "verification"
 
-    filter{
+    filter {
         excludeTestsMatching("*FunctionalTest")
     }
 }
 
-tasks.register<Test>("functionalTest"){
-    description = "Runs unit tests"
+tasks.register<Test>("functionalTest") {
+    description = "Runs functional tests."
     group = "verification"
 
-    filter{
+    filter {
         includeTestsMatching("*FunctionalTest")
     }
 }
 
-tasks.withType<Test>().configureEach() {
+tasks.withType<Test>().configureEach {
     useJUnitPlatform()
 }
 
@@ -82,4 +86,7 @@ tasks.test {
 
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
+    reports {
+        xml.required = true
+    }
 }
