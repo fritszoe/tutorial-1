@@ -80,7 +80,7 @@ class ProductServiceImplTest {
 
         assertEquals("a0f9de46-90b1-437d-a0bf-d0821dde9096", product.getProductId());
         assertEquals("Sampo cap Samsul", product.getProductName());
-        assertEquals(5, product.getProductQuantity());
+        assertEquals(10, product.getProductQuantity());
     }
     @Test
     void testDelete() {
