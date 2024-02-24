@@ -21,7 +21,7 @@ public class CarRepository {
 
     public Car findById(String id) {
         for (Car car: carData) {
-            if (car.getCarId().equals(id)) {
+            if (car.getProductId().equals(id)) {
                 return car;
             }
         }
@@ -31,15 +31,15 @@ public class CarRepository {
     public void update(String id, Car updatedCar) {
         for (int i = 0; i < carData.size(); i++) {
             Car car = carData.get(i);
-            if (car.getCarId().equals(id)) {
-                car.setCarName(updatedCar.getCarName());
+            if (car.getProductId().equals(id)) {
+                car.setProductName(updatedCar.getProductName());
                 car.setCarColor(updatedCar.getCarColor());
-                car.setCarQuantity(updatedCar.getCarQuantity());
+                car.setProductQuantity(updatedCar.getProductQuantity());
             }
         }
     }
 
     public void delete(String id) {
-        carData.removeIf(car -> car.getCarId().equals(id));
+        carData.removeIf(car -> car.getProductId().equals(id));
     }
 }

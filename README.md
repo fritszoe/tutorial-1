@@ -37,9 +37,9 @@ Selain itu, mungkin pada bagian return seperti di bagian create dan update, tida
 
 2.) OCP, Menurut saya sudah benar karena kita bisa menambahkan class lain dari car atau product, kita tidak perlu memodifikasi dan tinggal sambung-sambungin saja, attribute nya sesuai dengan car dan repository nya tinggal menggunakan CarRepository untuk mengurusnya.
 
-3.) LSP tidak dibutuhkan di sini, misalnya Deque dan ArrayDeque, ArrayDeque tetap interchangeable sama Deque, dia ttp bisa pakai dr Deque(Semua yg dr Deque). Dan di sini blm ada inheritance yang dibutuhkan, mungkin hanya di bagian interface saja.
+3.) LSP, nampaknya di sini, Object Car dapat di extends dari object Product.
 
 4.) ISP, Menurut saya ISP di sini sudah benar, karena masing-masing Interface, CarService dan ProductService sudah dipisah dan masing-masingnya juga sesuai dan tidak terlalu kompleks.
 
-5.) DIP, sudah benar karena yang di reference di Controller adalah CarService dan si CarService akan mengambil CarServiceImpl dari AutoWired.
+5.) DIP, mengubah CarServiceImpl di CarController menjadi CarService saja.
 </details>

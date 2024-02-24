@@ -6,13 +6,10 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Getter @Setter
-public class Car {
-    private String carId;
-    private String carName;
+public class Car extends Product {
     private String carColor;
-    private int carQuantity;
 
     public  Car() {
-        carId = UUID.randomUUID().toString();
+        super();
     }
 }
