@@ -67,20 +67,20 @@ class ProductServiceImplTest {
     void testEditProduct() {
         Product product = new Product();
         product.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        product.setProductName("Conditioner Cap Kaki Sebelas");
-        product.setProductQuantity(10);
+        product.setProductName("Sampo cap Bambang");
+        product.setProductQuantity(100);
         productService.create(product);
 
         Product editedProduct = new Product();
         editedProduct.setProductId("a0f9de46-90b1-437d-a0bf-d0821dde9096");
-        editedProduct.setProductName("Conditioner Cap Cai");
-        editedProduct.setProductQuantity(5);
+        editedProduct.setProductName("Sampo cap Samsul");
+        editedProduct.setProductQuantity(10);
 
         productService.edit(editedProduct);
 
         assertEquals("a0f9de46-90b1-437d-a0bf-d0821dde9096", product.getProductId());
-        assertEquals("Conditioner Cap Cai", product.getProductName());
-        assertEquals(5, product.getProductQuantity());
+        assertEquals("Sampo cap Samsul", product.getProductName());
+        assertEquals(10, product.getProductQuantity());
     }
     @Test
     void testDelete() {
