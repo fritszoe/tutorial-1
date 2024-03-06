@@ -43,3 +43,33 @@ Selain itu, mungkin pada bagian return seperti di bagian create dan update, tida
 
 5.) DIP, mengubah CarServiceImpl di CarController menjadi CarService saja.
 </details>
+
+<details>
+<summary>Reflection-5 (MODULE-04)</summary>
+
+# 1.
+
+## Correctness:
+1.) Yes, I do have enough functional tests
+
+2.) Yes, I am testing all edge cases
+
+3.) Yes, functional tests are enough and an integrated test could do more.
+## Maintanibility:
+1.) Yes, tests make me fearlessly and frequently refactor my code
+
+2.) My tests help me make a good code that fulfills clean code standards
+## Production Workflow:
+1.) My tests gave me feedbacks about bugs and I dont think I need to change anything
+right now.
+
+2.) I can review and refactor my tests to write faster integration tests
+
+3.) Yes I can run a subset of the full test suite
+
+4.) No I don't think I'm spending too much time for tests
+
+# 2.
+Tes saya sudah sesuai dengan F.I.R.S.T karena tes nya cepat dan tidak mengganggu
+workflow, tes juga sudah dibagi dari awal menjadi unit test dan functional tests.
+</details>
