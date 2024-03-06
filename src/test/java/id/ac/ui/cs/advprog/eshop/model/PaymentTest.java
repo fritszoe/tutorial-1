@@ -49,7 +49,7 @@ public class PaymentTest {
     }
 
     @Test
-    void testCreatePaymentWithNoOrder() {
+    void testBankPaymentWithNoOrder() {
         loadBankTransferPaymentData();
         assertThrows(IllegalArgumentException.class, () -> {
             new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0",
@@ -191,7 +191,7 @@ public class PaymentTest {
         assertEquals("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", payment.getId());
         assertEquals(PaymentMethod.VOUCHER.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
-        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
         paymentData.clear();
     }
 
