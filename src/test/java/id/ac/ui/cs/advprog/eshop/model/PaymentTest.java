@@ -1,5 +1,8 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -87,9 +90,9 @@ public class PaymentTest {
         Payment payment = new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", PaymentMethod.BANK.getValue(), order, paymentData);
         assertSame(order, payment.getOrder());
         assertEquals("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", payment.getId());
-        assertEquals(PaymentMethod.BANK.getValue(), payment.getPaymentMethod());
+        assertEquals(PaymentMethod.BANK.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
-        assertEquals(PaymentStatus.WAITING_CONFIRMATION.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
         paymentData.clear();
     }
 
@@ -99,7 +102,7 @@ public class PaymentTest {
         Payment payment = new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", PaymentMethod.BANK.getValue(), order, paymentData, PaymentStatus.SUCCESS.getValue());
         assertSame(order, payment.getOrder());
         assertEquals("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", payment.getId());
-        assertEquals(PaymentMethod.BANK.getValue(), payment.getPaymentMethod());
+        assertEquals(PaymentMethod.BANK.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
         paymentData.clear();
@@ -120,7 +123,7 @@ public class PaymentTest {
         Payment payment = new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", PaymentMethod.BANK.getValue(), order, paymentData, PaymentStatus.REJECTED.getValue());
         assertSame(order, payment.getOrder());
         assertEquals("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", payment.getId());
-        assertEquals(PaymentMethod.BANK.getValue(), payment.getPaymentMethod());
+        assertEquals(PaymentMethod.BANK.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
@@ -157,8 +160,8 @@ public class PaymentTest {
     void testSetPaymentStatusToDefault() {
         loadBankTransferPaymentData();
         Payment payment = new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", PaymentMethod.BANK.getValue(), order, paymentData);
-        payment.setStatus(PaymentStatus.WAITING_CONFIRMATION.getValue());
-        assertEquals(PaymentStatus.WAITING_CONFIRMATION.getValue(), payment.getStatus());
+        payment.setStatus(PaymentStatus.WAITING_PAYMENT.getValue());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
         paymentData.clear();
     }
 
@@ -173,7 +176,7 @@ public class PaymentTest {
 
     @Test
     void testCreateBankTransferPaymentButPaymentDataIncorrect() {
-        loadVoucherCodePaymentData();
+        loadVoucherPaymentData();
         assertThrows(IllegalArgumentException.class, () -> {
             new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", PaymentMethod.BANK.getValue(), order, paymentData);
         });
@@ -182,11 +185,11 @@ public class PaymentTest {
 
     @Test
     void testCreateVoucherPaymentSuccess() {
-        loadVoucherCodePaymentData();
+        loadVoucherPaymentData();
         Payment payment = new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", PaymentMethod.VOUCHER.getValue(), order, paymentData);
         assertSame(order, payment.getOrder());
         assertEquals("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", payment.getId());
-        assertEquals(PaymentMethod.VOUCHER.getValue(), payment.getPaymentMethod());
+        assertEquals(PaymentMethod.VOUCHER.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
         paymentData.clear();
@@ -198,9 +201,9 @@ public class PaymentTest {
         Payment payment = new Payment("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", PaymentMethod.BANK.getValue(), order, paymentData);
         assertSame(order, payment.getOrder());
         assertEquals("fr13G8hJ-9a7f-4669-92F2-eaf539291cc0", payment.getId());
-        assertEquals(PaymentMethod.BANK.getValue(), payment.getPaymentMethod());
+        assertEquals(PaymentMethod.BANK.getValue(), payment.getMethod());
         assertEquals(paymentData, payment.getPaymentData());
-        assertEquals(PaymentStatus.WAITING_CONFIRMATION.getValue(), payment.getStatus());
+        assertEquals(PaymentStatus.WAITING_PAYMENT.getValue(), payment.getStatus());
         paymentData.clear();
     }
 }
